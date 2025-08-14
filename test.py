@@ -11,7 +11,7 @@ save_dir = r'./logs/test.txt'
 if save_dir != r'':
     f = open(save_dir, 'w')
 device = torch.device('cuda')
-weight_path = "./trained_model/RGBTCC"
+weight_path = "./trained_model/RGBTCC.pth"
 test_path = r'./dataset/RGBT_CC/test'
 test_dataset = MyRGBT_CC(test_path, train=False)
 test_dataloader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=0, drop_last=True)
@@ -39,4 +39,5 @@ for weight in os.listdir(weight_path):
     mae = np.mean(np.abs(epoch_res))
     print('mae:{0:.2f}, Rmse:{1:.2f}'.format(mae, Rmse))
 if save_dir != r'':
+
     f.close()
