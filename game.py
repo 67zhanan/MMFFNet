@@ -27,8 +27,8 @@ def gameing(output, key_points):
 
 
 device = torch.device('cuda')
-checkpoints = r'D:\ZhouKunyu\MMFFNet\mmffnet\mae9.87_Rmse16.85.pth'
-test_path = r'D:\ZhouKunyu\MyNet\dataset\RGBT_CC\test'
+checkpoints = r'./trained_model/RGBTCC.pth'
+test_path = r'./dataset/RGBT_CC/test'
 test_dataset = MyRGBT_CC(test_path, train=False, game=True)
 test_dataloader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=0, drop_last=True)
 
@@ -48,4 +48,5 @@ for rgb_images, t_images, sum_person, key_points, density_maps, name in test_dat
 game1 = sum(game[0]) / len(game[0])
 game2 = sum(game[1]) / len(game[2])
 game3 = sum(game[2]) / len(game[2])
+
 print(game1, game2, game3)
