@@ -26,18 +26,15 @@ class FFM(nn.Module):
                                     nn.ReLU())
         self.rgb_t = nn.Sequential(nn.Conv2d(channels, channels, 3, 1, 1),
                                    nn.ReLU(),
-                                   nn.BatchNorm2d(channels)
-                                   )
+                                   nn.BatchNorm2d(channels))
         self.t_rgb = nn.Sequential(nn.Conv2d(channels, channels, 3, 1, 1),
                                    nn.ReLU(),
-                                   nn.BatchNorm2d(channels)
-                                   )
+                                   nn.BatchNorm2d(channels))
         self.conv1 = FEM(channels)
         self.conv2 = FEM(channels)
         self.cat = nn.Sequential(nn.Conv2d(channels * 2, channels, 1, 1, 0),
                                  nn.ReLU(),
-                                 nn.BatchNorm2d(channels)
-                                 )
+                                 nn.BatchNorm2d(channels))
 
     def forward(self, rgb, t):
         rgb = self.rgb_conv(rgb) + rgb
@@ -50,4 +47,5 @@ class FFM(nn.Module):
         new_t = self.conv2(new_t) + new_t
         share = torch.cat([new_rgb, new_t], dim=1)
         share = self.cat(share)
+
         return share
