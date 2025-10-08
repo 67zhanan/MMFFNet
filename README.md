@@ -1,5 +1,4 @@
 # MMFFNet
-# The rest of the code we will open after the article hired
 # Weight of RGBTCC dataset
 **百度网盘 提取码:7pg5 [链接](https://pan.baidu.com/s/1Es8cWKUGee3-sJf7oHdr9w?pwd=7pg5)**
 # 可直接训练的RGBTCC数据集
